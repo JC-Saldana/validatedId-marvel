@@ -5,9 +5,9 @@ import { createStore, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 import App from './App'
 import './index.css'
-import charactersReducer from './reducers/characters'
+import allReducers from './reducers'
 
-const store = createStore(charactersReducer, compose(applyMiddleware(thunk)))
+const store = createStore(allReducers, compose(applyMiddleware(thunk)))
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
