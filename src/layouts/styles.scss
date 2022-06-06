@@ -9,4 +9,12 @@
     .pagination {
         padding: 12px 0px;
     }
+    .form-and-pagination{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }   
+    .name-input {
+        margin-bottom: 16px;
+    }
 }

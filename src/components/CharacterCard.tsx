@@ -2,7 +2,6 @@ import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/m
 
 export default function CharacterCard({ character }) {
     const {name, id, description, thumbnail, urls} = character
-    console.log(thumbnail)
     return (
         <>
             <Card sx={{ maxWidth: 345 }}>
