@@ -1,6 +1,6 @@
-import { FormControl, Grid, Input, InputLabel, MenuItem, Select } from "@mui/material";
+import { Autocomplete, FormControl, Grid, Input, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 
-export default function CharacterForm({ page, formData, setFormData }: any) {
+export default function CharacterForm({ page, setPage, isLoading, characters, comics, formData, setFormData }: any) {
 
     const handleChange = (value: any, name: string) => {
         // If value changed is limit, adjust page offset
@@ -10,15 +10,32 @@ export default function CharacterForm({ page, formData, setFormData }: any) {
                 [name]: value,
                 offset: (value * (page - 1))
             })
+            setPage(1)
         } else {
             setFormData({ ...formData, [name]: value })
+            setPage(1)
         }
     }
-
     return (
-        <>
-            <Input placeholder={"Name"} className="name-input" fullWidth  onChange={e => handleChange(e.target.value, "nameStartsWith")} />
-            <Grid container spacing={3}>
+        <Paper className="form-container">
+            <Input placeholder={"Name"} className="form-element" fullWidth onChange={e => handleChange(e.target.value, "nameStartsWith")} />
+            <Autocomplete
+                multiple
+                id="tags-standard"
+                options={comics ? comics : []}
+                getOptionLabel={(option: any) => option.title}
+                onChange={(event, value) => handleChange(value.map((comic: any) => comic.id), "comics")}
+                className="form-element"
+                renderInput={params => (
+                    <TextField
+                        {...params}
+                        variant="standard"
+                        placeholder={"From comics..."}
+                        onChange={e => { } /* setUserRegex(e.target.value) */}
+                    />
+                )}
+            />
+            <Grid container spacing={6} className="form-element">
                 <Grid item xs={6} className="form-and-pagination">
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Limit</InputLabel>
@@ -56,6 +73,9 @@ export default function CharacterForm({ page, formData, setFormData }: any) {
                     </FormControl>
                 </Grid>
             </Grid>
-        </>
+            <Typography gutterBottom variant="h5" component="div">
+                {isLoading ? "Searching..." : `Found: ${characters.total}`}
+            </Typography>
+        </Paper>
     )
 }

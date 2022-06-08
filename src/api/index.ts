@@ -17,3 +17,10 @@ export const fetchCharacters = (params: any) => {
     });
     return API.get(URL)
 }
+
+export const fetchComics = () => {
+    let URL = `/comics?`
+    // Needed params for Marvel API
+    URL += `ts=1&apikey=${publicApiKey}&hash=${hash}`
+    return API.get(URL)
+}
