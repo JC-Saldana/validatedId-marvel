@@ -33,9 +33,12 @@
     }
 
     .cards-grid {
-        max-height: 600px;
         display: flex;
         justify-content: center;
         align-items: flex-start;
+        height: 100%;
+    }
+    .detailed-character {
+        padding: 140px;
     }
 }

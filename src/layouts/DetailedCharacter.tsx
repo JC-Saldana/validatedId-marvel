@@ -1,10 +1,11 @@
-import { Button, Icon, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import "./styles.scss"
 
 interface Comic {
     name: string;
@@ -34,7 +35,6 @@ export default function DetailedCharacter() {
     useEffect(() => {
         if (characters) {
             const foundCharacter = characters.results.find((character: any) => character.id === Number(id))
-            console.log("foundCharacter", foundCharacter)
             setCharacter(foundCharacter)
         }
     }, [characters])
@@ -42,8 +42,8 @@ export default function DetailedCharacter() {
     return (
         <>
             {character ?
-                <Container maxWidth="sm">
-                    <Typography className="title" gutterBottom variant="h5" component="div">
+                <Container maxWidth="sm" className="detailed-character">
+                    <Typography gutterBottom variant="h5" component="div" className="header">
                         {character.name}
                         <Button variant="contained" component={Link} to="/" startIcon={<ArrowBackIosIcon />}>
                             Characters
