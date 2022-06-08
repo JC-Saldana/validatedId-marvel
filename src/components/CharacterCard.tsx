@@ -1,10 +1,15 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
-import "./styles.scss"
-import "./animations.scss"
+import { Character } from "../interfaces/characters";
 import { Link } from "react-router-dom"
+import "./animations.scss"
+import "./styles.scss"
 
-export default function CharacterCard({ character }) {
-    const { id, name, description, thumbnail, series, stories } = character
+interface Props {
+    character: Character;
+}
+
+export default function CharacterCard({ character }: Props){
+    const { id, name, thumbnail, series, stories } = character
     return (
         <>
             <Card sx={{ maxWidth: 345 }} className="scale-in-center character-card">

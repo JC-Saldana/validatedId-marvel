@@ -1,6 +1,22 @@
 import { Autocomplete, FormControl, Grid, Input, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
+import { Character, FormData } from "../interfaces/characters";
+import { Comic } from "../interfaces/comics";
 
-export default function CharacterForm({ page, setOffset, setPage, isLoading, characters, comics, formData, setFormData }: any) {
+interface Props {
+    page: number;
+    setOffset: (number: number) => any;
+    setPage: (page: number) => any;
+    isLoading: boolean;
+    characters: {
+        total: number;
+        results: [Character];
+    }
+    comics: [Comic];
+    formData: FormData;
+    setFormData: (formData: FormData) => any;
+}
+
+export default function CharacterForm({ page, setOffset, setPage, isLoading, characters, comics, formData, setFormData }: Props) {
 
     const handleChange = (value: any, name: string) => {
         // If value changed is limit, adjust page offset
@@ -16,6 +32,7 @@ export default function CharacterForm({ page, setOffset, setPage, isLoading, cha
             setPage(1)
         }
     }
+    console.log(comics)
     return (
         <Paper className="form-container">
             <Input placeholder={"Name"} className="form-element" fullWidth onChange={e => handleChange(e.target.value, "nameStartsWith")} />
@@ -23,15 +40,14 @@ export default function CharacterForm({ page, setOffset, setPage, isLoading, cha
                 multiple
                 id="tags-standard"
                 options={comics ? comics : []}
-                getOptionLabel={(option: any) => option.title}
-                onChange={(event, value) => handleChange(value.map((comic: any) => comic.id), "comics")}
+                getOptionLabel={(option: Comic) => option.title}
+                onChange={(e, value) => handleChange(value.map((comic: Comic) => comic.id), "comics")}
                 className="form-element"
                 renderInput={params => (
                     <TextField
                         {...params}
                         variant="standard"
                         placeholder={"From comics..."}
-                        onChange={e => { } /* setUserRegex(e.target.value) */}
                     />
                 )}
             />

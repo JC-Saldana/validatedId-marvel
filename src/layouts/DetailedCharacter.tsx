@@ -5,31 +5,15 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { RootState } from '../main';
 import "./styles.scss"
-
-interface Comic {
-    name: string;
-}
-
-interface URL {
-    url: string;
-    type: string;
-}
-
-interface Character {
-    name: string;
-    thumbnail: any;
-    description: string;
-    urls: [URL];
-    comics: {
-        items: [Comic];
-    }
-}
+import { Character } from "../interfaces/characters";
+import { URL, Comic } from "../interfaces/comics";
 
 export default function DetailedCharacter() {
     // Gets character from store by the id in params
     const { id } = useParams()
-    const { characters } = useSelector((state: any) => state.characters)
+    const { characters } = useSelector((state: RootState) => state.characters)
     const [character, setCharacter] = useState<Character>()
 
     useEffect(() => {
@@ -38,7 +22,7 @@ export default function DetailedCharacter() {
             setCharacter(foundCharacter)
         }
     }, [characters])
-
+    
     return (
         <>
             {character ?

@@ -3,24 +3,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCharactersByPage } from "../actions/characters"
 import { getComics } from "../actions/comics"
 import { Grid, Pagination, Typography } from "@mui/material"
+import { AppDispatch, RootState } from '../main';
 import { Container } from "@mui/system"
 import "./styles.scss"
 import CharacterForm from "./CharacterForm"
 import CharactersCards from "./CharacterCards"
+import { FormData } from "interfaces/characters"
 
 export default function Characters() {
 
+  
+
+    const dispatch = useDispatch<AppDispatch>()
+    const { isLoading, characters } = useSelector((state: RootState) => state.characters)
+    const { comics } = useSelector((state: RootState) => state.comics)
     const initialFormData = {
         nameStartsWith: "",
-        comics: [],
+        comics: comics,
         limit: 10,
         orderBy: "name"
     }
-
-    const dispatch = useDispatch()
-    const { isLoading, characters } = useSelector((state: any) => state.characters)
-    const { comics } = useSelector((state: any) => state.comics)
-    const [formData, setFormData] = useState({ ...initialFormData })
+    const [formData, setFormData] = useState<FormData>({ ...initialFormData })
     const [page, setPage] = useState(1)
     const [offSet, setOffset] = useState(0)
 

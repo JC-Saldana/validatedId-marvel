@@ -7,6 +7,9 @@ import App from './App'
 import './index.scss'
 import allReducers from './reducers'
 
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+
 const store = createStore(allReducers, compose(applyMiddleware(thunk)))
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
