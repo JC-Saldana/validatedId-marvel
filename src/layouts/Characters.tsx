@@ -14,7 +14,6 @@ export default function Characters() {
         nameStartsWith: "",
         comics: [],
         limit: 10,
-        offset: 0,
         orderBy: "name"
     }
 
@@ -23,17 +22,15 @@ export default function Characters() {
     const { comics } = useSelector((state: any) => state.comics)
     const [formData, setFormData] = useState({ ...initialFormData })
     const [page, setPage] = useState(1)
+    const [offSet, setOffset] = useState(0)
 
     useEffect(() => {
-        dispatch(getCharactersByPage(formData))
+        dispatch(getCharactersByPage({ ...formData, offset: offSet }))
         dispatch(getComics())
-    }, [formData])
+    }, [formData, offSet])
 
     useEffect(() => {
-        setFormData({
-            ...formData,
-            offset: (formData.limit * (page - 1))
-        })
+        setOffset(formData.limit * (page - 1))
     }, [page])
 
     const handlePagination = (event: React.ChangeEvent<unknown>, page: number) => {
@@ -50,6 +47,7 @@ export default function Characters() {
                     <Grid item md={4} xs={12} className="form-and-pagination">
                         <CharacterForm
                             page={page}
+                            setOffset={setOffset}
                             isLoading={isLoading}
                             characters={characters}
                             comics={comics.results}
@@ -61,8 +59,8 @@ export default function Characters() {
                             count={Math.floor(characters.total / formData.limit) || 0}
                             color="primary"
                             page={page}
-                            onChange={handlePagination} 
-                            />
+                            onChange={handlePagination}
+                        />
                     </Grid>
                     <Grid item md={8} xs={12}>
                         <CharactersCards isLoading={isLoading} characters={characters.results} />

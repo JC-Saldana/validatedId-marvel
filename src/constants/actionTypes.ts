@@ -1,6 +1,7 @@
 
 // Characters
-export const FETCH_ALL_CHARACTERS = "FETCH_ALL_CHARACTERS"
+export const FETCH_BY_ID = "FETCH_BY_ID"
+export const FETCH_BY_PAGE = "FETCH_BY_PAGE"
 
 // Characters
 export const FETCH_ALL_COMICS = "FETCH_ALL_COMICS"

@@ -5,7 +5,14 @@ const hash = import.meta.env.HASH || "50e694833cdd1127bad6e4c5e4c407f8"
 const publicApiKey = "f60478c6170145b94ef1165399b68a94"
 const API = axios.create({ baseURL: `https://gateway.marvel.com:443/v1/public/` })
 
-export const fetchCharacters = (params: any) => {
+export const fetchCharacterById = (id: number) => {
+    let URL = `/characters/${id}?`
+    // Needed params for Marvel API
+    URL += `ts=1&apikey=${publicApiKey}&hash=${hash}`
+    return API.get(URL)
+}
+
+export const fetchCharactersByPage = (params: any) => {
     let URL = `/characters?`
     // Needed params for Marvel API
     URL += `ts=1&apikey=${publicApiKey}&hash=${hash}`

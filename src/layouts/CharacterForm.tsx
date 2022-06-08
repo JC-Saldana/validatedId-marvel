@@ -1,15 +1,15 @@
 import { Autocomplete, FormControl, Grid, Input, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 
-export default function CharacterForm({ page, setPage, isLoading, characters, comics, formData, setFormData }: any) {
+export default function CharacterForm({ page, setOffset, setPage, isLoading, characters, comics, formData, setFormData }: any) {
 
     const handleChange = (value: any, name: string) => {
         // If value changed is limit, adjust page offset
         if (name === "limit") {
             setFormData({
                 ...formData,
-                [name]: value,
-                offset: (value * (page - 1))
+                [name]: value
             })
+            setOffset(value * (page - 1))
             setPage(1)
         } else {
             setFormData({ ...formData, [name]: value })
