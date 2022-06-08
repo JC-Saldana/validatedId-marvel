@@ -1,14 +1,14 @@
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { Character } from "../interfaces/characters";
 import { Button, Typography } from "@mui/material";
-import { Container } from "@mui/system";
+import { URL, Comic } from "../interfaces/comics";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Container } from "@mui/system";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { RootState } from '../main';
 import "./styles.scss"
-import { Character } from "../interfaces/characters";
-import { URL, Comic } from "../interfaces/comics";
 
 export default function DetailedCharacter() {
     // Gets character from store by the id in params

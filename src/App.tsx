@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Characters from "./layouts/Characters"
 import DetailedCharacter from "./layouts/DetailedCharacter"
+import Characters from "./layouts/Characters"
 
 function App() {
 

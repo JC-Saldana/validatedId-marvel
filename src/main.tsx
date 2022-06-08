@@ -1,11 +1,11 @@
 import React from 'react'
+import { createStore, applyMiddleware, compose } from "redux"
 import ReactDOM from 'react-dom/client'
 import { Provider } from "react-redux"
-import { createStore, applyMiddleware, compose } from "redux"
+import allReducers from './reducers'
 import thunk from "redux-thunk"
 import App from './App'
 import './index.scss'
-import allReducers from './reducers'
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

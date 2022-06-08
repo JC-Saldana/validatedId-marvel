@@ -1,4 +1,3 @@
-
 // Characters
 export const FETCH_BY_ID = "FETCH_BY_ID"
 export const FETCH_BY_PAGE = "FETCH_BY_PAGE"

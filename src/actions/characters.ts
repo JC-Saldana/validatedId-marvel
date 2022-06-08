@@ -1,5 +1,5 @@
-import { fetchCharacterById, fetchCharactersByPage } from "../api";
 import { END_LOADING, FETCH_BY_ID, FETCH_BY_PAGE, START_LOADING } from "../constants/actionTypes";
+import { fetchCharacterById, fetchCharactersByPage } from "../api";
 
 export const getCharacterById = (id: number) => async (dispatch: any) => {
     try {

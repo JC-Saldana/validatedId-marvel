@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from 'react-redux'
-import { getCharactersByPage } from "../actions/characters"
-import { getComics } from "../actions/comics"
 import { Grid, Pagination, Typography } from "@mui/material"
+import { getCharactersByPage } from "../actions/characters"
+import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../main';
+import { FormData } from "interfaces/characters"
+import CharactersCards from "./CharacterCards"
+import { getComics } from "../actions/comics"
+import CharacterForm from "./CharacterForm"
 import { Container } from "@mui/system"
 import "./styles.scss"
-import CharacterForm from "./CharacterForm"
-import CharactersCards from "./CharacterCards"
-import { FormData } from "interfaces/characters"
 
 export default function Characters() {
-
-  
 
     const dispatch = useDispatch<AppDispatch>()
     const { isLoading, characters } = useSelector((state: RootState) => state.characters)

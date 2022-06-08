@@ -1,7 +1,7 @@
 import CharacterCard from "../components/CharacterCard"
 import { CircularProgress, Grid } from "@mui/material"
-import "./styles.scss"
 import { Character } from "../interfaces/characters";
+import "./styles.scss"
 
 interface Props {
     isLoading: boolean;

@@ -1,5 +1,5 @@
-import { fetchComics } from "../api";
 import { END_LOADING, FETCH_ALL_COMICS, START_LOADING } from "../constants/actionTypes";
+import { fetchComics } from "../api";
 
 export const getComics = () => async (dispatch: any) => {
     try {
