@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 
 export default function CharacterCard({ character }) {
     const { id, name, description, thumbnail, series, stories } = character
-    console.log(character)
     return (
         <>
             <Card sx={{ maxWidth: 345 }} className="scale-in-center character-card">
